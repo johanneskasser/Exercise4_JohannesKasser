@@ -25,7 +25,7 @@ public abstract class Downloader {
 
             //fileName = urlString.substring(urlString.lastIndexOf('/') + 1);
             //fileName = url4download.getHost() + HTML_EXTENTION;
-            fileName = title.replace(" ", "").replace("<", "").replace(">", "");
+            fileName = title.replace(" ", "").replace("<", "").replace(">", "") + HTML_EXTENTION;
             os = new FileOutputStream(DIRECTORY_DOWNLOAD + fileName);
 
             byte[] b = new byte[2048];
