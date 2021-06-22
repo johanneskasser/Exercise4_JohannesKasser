@@ -84,4 +84,11 @@ public class Controller {
 				.map(stringListEntry -> stringListEntry.getKey() + " " + stringListEntry.getValue().size())
 				.orElseThrow();
 	}
+
+	public List<String> getURLs() {
+		return articles.stream()
+				.map(Article::getUrl)
+				.collect(Collectors.toList());
+	}
+
 }
