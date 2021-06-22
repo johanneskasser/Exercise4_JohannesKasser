@@ -13,9 +13,9 @@ public abstract class Downloader {
     public static final String HTML_EXTENTION = ".html";
     public static final String DIRECTORY_DOWNLOAD = "./download/";
 
-    public abstract int process(List<String> urls);
+    public abstract int process(List<String> urls, List<String> titles);
 
-    public String saveUrl2File(String urlString) {
+    public String saveUrl2File(String urlString, String title) {
         InputStream is = null;
         OutputStream os = null;
         String fileName = "";
@@ -23,8 +23,9 @@ public abstract class Downloader {
             URL url4download = new URL(urlString);
             is = url4download.openStream();
 
-            fileName = urlString.substring(urlString.lastIndexOf('/') + 1);
-            fileName = url4download.getHost() + HTML_EXTENTION;
+            //fileName = urlString.substring(urlString.lastIndexOf('/') + 1);
+            //fileName = url4download.getHost() + HTML_EXTENTION;
+            fileName = title.replace(" ", "").replace("<", "").replace(">", "");
             os = new FileOutputStream(DIRECTORY_DOWNLOAD + fileName);
 
             byte[] b = new byte[2048];

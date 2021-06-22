@@ -11,15 +11,16 @@ public class ParallelDownloader extends Downloader {
     ExecutorService executorService = Executors.newFixedThreadPool(10);
 
     @Override
-    public int process(List<String> urls) {
+    public int process(List<String> urls, List<String> titles) {
         long start = System.nanoTime();
         int count = 0;
         for (String url : urls) {
             try {
+                int finalCount = count;
                 Future<?> taskStatus = executorService.submit(() -> {
                     System.out.printf("Starting Thread %s\n", Thread.currentThread().getName());
                     System.out.println("Downloaded: " + url);
-                    saveUrl2File(url);
+                    saveUrl2File(url, titles.get(finalCount));
                 });
                 count++;
             } catch (Exception e) {

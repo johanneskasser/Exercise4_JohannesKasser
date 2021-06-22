@@ -53,13 +53,13 @@ public class UserInterface {
 		menu.insert("g", "Download URLs sequential", () -> {
 			//Todo
 			SequentialDownloader sequentialDownloader = new SequentialDownloader();
-			sequentialDownloader.process(ctrl.getURLs());
+			sequentialDownloader.process(ctrl.getURLs(), ctrl.getTitle());
 		});
 		menu.insert("h", "Download URLs parallel", () -> {
 			System.out.println("Start parallel download!");
 			//long start = System.nanoTime();
 			ParallelDownloader parallelDownloader = new ParallelDownloader();
-			parallelDownloader.process(ctrl.getURLs());
+			parallelDownloader.process(ctrl.getURLs(), ctrl.getTitle());
 			//long end = System.nanoTime();
 			//System.out.println("Time elapsed: " + (end - start)*0.000000001 + "secs");
 		});
