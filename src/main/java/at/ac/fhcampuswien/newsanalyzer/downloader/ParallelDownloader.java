@@ -23,7 +23,7 @@ public class ParallelDownloader extends Downloader {
                 });
                 count++;
             } catch (Exception e) {
-                System.out.println("Error");
+                System.out.println("Problem with Thread: " + Thread.currentThread().getName());
             }
         }
         executorService.shutdown();
